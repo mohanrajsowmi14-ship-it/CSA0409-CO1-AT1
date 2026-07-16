@@ -1,0 +1,32 @@
+A)
+  FILE MANAGEMENT HELP:
+    organize files efficiently
+    store and retrieve data
+    provide security and access control
+    manage disk space
+B)
+   OPEN()-opens a file for reading or writing
+   close()- closes the file and releases resources
+C) 
+   #include <fcntl.h>
+#include <unistd.h>
+
+int main()
+{
+    int fd, n;
+    char buffer[100];
+
+    // Open the file
+    fd = open("student.txt", O_RDONLY);
+
+    // Read the file contents
+    n = read(fd, buffer, 100);
+
+    // Display the contents
+    write(1, buffer, n);
+
+    // Close the file
+    close(fd);
+
+    return 0;
+}
