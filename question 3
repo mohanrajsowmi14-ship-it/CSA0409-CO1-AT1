@@ -1,0 +1,37 @@
+A)
+     system calls required:
+        open()
+        read()
+        write()
+        close()
+B)
+    1. read() - reads data from a file
+    2. write()- writes data into a file
+C)
+    #include <fcntl.h>
+#include <unistd.h>
+
+int main()
+{
+    int source, dest;
+    char buffer[100];
+    int n;
+
+    // Open source file
+    source = open("source.txt", O_RDONLY);
+
+    // Create destination file
+    dest = open("destination.txt", O_CREAT | O_WRONLY, 0644);
+
+    // Copy contents
+    while ((n = read(source, buffer, 100)) > 0)
+    {
+        write(dest, buffer, n);
+    }
+
+    // Close files
+    close(source);
+    close(dest);
+
+    return 0;
+}
