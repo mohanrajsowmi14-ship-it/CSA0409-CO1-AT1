@@ -1,0 +1,30 @@
+A)
+   fork() creates a new child process
+   exec() replaces the current process with a new program
+B)
+   WAIT() makes the parent process wait until the child process completes execution
+C)
+   #include <stdio.h>
+#include <unistd.h>
+#include <sys/wait.h>
+
+int main()
+{
+    int pid;
+
+    pid = fork();          // Create child process
+
+    if (pid == 0)
+    {
+        // Child process
+        execl("/bin/ls", "ls", NULL);   // Execute ls command
+    }
+    else
+    {
+        // Parent process
+        wait(NULL);        // Wait for child to finish
+        printf("Child process completed.\n");
+    }
+
+    return 0;
+}
