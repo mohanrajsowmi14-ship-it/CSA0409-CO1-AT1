@@ -1,0 +1,18 @@
+A)
+   SYSTEM CALLS REQUIRED:
+        .open()
+        .write()
+        .read()
+        .close()
+B)
+  purpose of file managemnet system calls:
+       1.open()-opens or creates a file
+       2.wrie()-write data to file
+C)
+   #include <fcntl.h>
+   #include <unistd.h>
+   int main(){
+       int fd = open("student.txt", 0_CREAT |O_ WRONLY, 0644);
+        write(fd, "john", 4);
+        close(fd);
+    return 0;
